@@ -18,6 +18,7 @@ struct ContentView: View {
                                 text: $comicNumber) {
                     loadComic()
                 }
+                                .accessibilityLabel(Text("comic_number_textfield"))
                                 .font(.body)
                                 .padding(8)
                                 .cornerRadius(8)
@@ -36,6 +37,7 @@ struct ContentView: View {
                         .padding(.horizontal, 16)
                         .background(Capsule().foregroundStyle(Color.blue.opacity(opacity)))
                 }
+                .accessibilityLabel(Text("submit_comic_button"))
                 .disabled(comicNumber.isEmpty)
                 .navigationDestination(for: String.self) { number in
                     ComicDetailView(viewModel: viewModel, number: number)

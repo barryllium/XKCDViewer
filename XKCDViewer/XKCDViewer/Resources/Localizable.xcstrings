@@ -14,6 +14,16 @@
         }
       }
     },
+    "comic_number_textfield" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comic number textfield"
+          }
+        }
+      }
+    },
     "error" : {
       "localizations" : {
         "en" : {
@@ -70,6 +80,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        }
+      }
+    },
+    "submit_comic_button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submit comic button"
           }
         }
       }
