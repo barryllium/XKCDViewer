@@ -43,6 +43,7 @@ struct ComicInfoView: View {
                     Spacer()
                 }
                 
+                // Show an "invisible" overlay over the rest of the view, so tapping on it can dismiss the alt text
                 if isShowingAltText {
                     Color.secondary.opacity(0.00001)
                         .onTapGesture {

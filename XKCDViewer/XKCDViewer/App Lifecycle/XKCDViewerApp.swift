@@ -19,6 +19,7 @@ struct XKCDViewerApp: App {
         
         return WindowGroup {
             ContentView(cacheActor: cacheActor)
+                .environmentObject(NetworkViewModel())
         }
     }
 }

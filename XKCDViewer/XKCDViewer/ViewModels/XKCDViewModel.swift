@@ -41,27 +41,32 @@ class XKCDViewModel: ObservableObject {
             return
         }
         
+        // Show a loading spinner when we have a valid url
         withAnimation {
             isLoading = true
         }
         
+        // When this function exits, we always want to hide the loading spinner
         defer {
             withAnimation {
                 isLoading = false
             }
         }
         
+        // If SwiftData is available, check the cache. If we have the data, load and exit without calling network
         if #available(iOS 17, *),
            let cachedComic = await comicCacheActor.fetchComic(for: number) {
             comic = cachedComic
             return
         }
         
+        // Create the network request to load asynchronously
         let request = AsyncURLRequest<XKCDComic>(url: url)
         
         do {
             let result = try await apiClient.fetchURL(request)
             comic = result
+            // If SwiftData is available, cache the response
             if #available(iOS 17, *) {
                 try? await comicCacheActor.add(result)
             }
@@ -72,6 +77,7 @@ class XKCDViewModel: ObservableObject {
         }
     }
     
+    // Whenever the ComicDetailView is dismissed, we want to reset it so we don't show stale data on the next load
     func dismissComic() {
         if !navigationPath.isEmpty {
             navigationPath.removeLast()
@@ -81,6 +87,7 @@ class XKCDViewModel: ObservableObject {
         showErrorAlert = false
     }
     
+    // Show either the generic or invalid URL alert
     func showAlert(state: AlertState = .generic) {
         errorAlertState = state
         showErrorAlert = true

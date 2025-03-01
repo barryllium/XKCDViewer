@@ -15,6 +15,7 @@ struct NumberTextField: View {
     var body: some View {
         TextField(placeholder, text: $text)
             .onChange(of: text) { newValue in
+                // filter out non-numbers
                 text = newValue.filter { $0.isNumber }
             }
             .onSubmit {

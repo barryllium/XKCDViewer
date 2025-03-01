@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 
+// Base class to save XKCDComic instance data to SwiftData
 @available(iOS 17.0, *)
 @Model
 class XKCDComicData {

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Base struct for parsing json and driving ComicDetailView
 struct XKCDComic: Codable {
     let month: String
     let number: Int
