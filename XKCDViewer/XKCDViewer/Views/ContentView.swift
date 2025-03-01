@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = XKCDViewModel()
+    @StateObject var viewModel: XKCDViewModel
     @State var comicNumber = ""
+    
+    init(cacheActor: CacheActor) {
+        _viewModel = StateObject(wrappedValue: XKCDViewModel(cacheActor: cacheActor))
+    }
     
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
@@ -57,5 +61,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(cacheActor: NoCacheActor())
 }

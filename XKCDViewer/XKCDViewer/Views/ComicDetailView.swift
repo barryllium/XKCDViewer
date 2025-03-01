@@ -37,5 +37,5 @@ struct ComicDetailView: View {
 }
 
 #Preview {
-    ComicDetailView(viewModel: XKCDViewModel(), number: "100")
+    ComicDetailView(viewModel: XKCDViewModel(cacheActor: NoCacheActor()), number: "100")
 }

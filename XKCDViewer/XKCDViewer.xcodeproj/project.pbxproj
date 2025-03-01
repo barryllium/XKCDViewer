@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F1CE15042D739D9E004917E7 /* SwiftData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CE15032D739D9E004917E7 /* SwiftData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		F19138B92D734633002D81F5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		F19138A82D734632002D81F5 /* XKCDViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XKCDViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19138B82D734633002D81F5 /* XKCDViewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XKCDViewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19138C22D734633002D81F5 /* XKCDViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XKCDViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1CE15032D739D9E004917E7 /* SwiftData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftData.framework; path = System/Library/Frameworks/SwiftData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1CE15042D739D9E004917E7 /* SwiftData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +97,7 @@
 				F19138AA2D734632002D81F5 /* XKCDViewer */,
 				F19138BB2D734633002D81F5 /* XKCDViewerTests */,
 				F19138C52D734633002D81F5 /* XKCDViewerUITests */,
+				F1CE15022D739D9E004917E7 /* Frameworks */,
 				F19138A92D734632002D81F5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +110,14 @@
 				F19138C22D734633002D81F5 /* XKCDViewerUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F1CE15022D739D9E004917E7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F1CE15032D739D9E004917E7 /* SwiftData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

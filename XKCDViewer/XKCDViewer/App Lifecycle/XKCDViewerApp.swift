@@ -10,8 +10,15 @@ import SwiftUI
 @main
 struct XKCDViewerApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        var cacheActor: CacheActor
+        if #available(iOS 17, *) {
+            cacheActor = ComicCacheActor.instance()
+        } else {
+            cacheActor = NoCacheActor()
+        }
+        
+        return WindowGroup {
+            ContentView(cacheActor: cacheActor)
         }
     }
 }

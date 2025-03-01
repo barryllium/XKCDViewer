@@ -12,10 +12,10 @@ import XCTest
 final class XKCDViewerTests: XCTestCase {
     var viewModel: XKCDViewModel!
     
-    override func setUp() {
+    override func setUpWithError() throws {
         super.setUp()
         
-        viewModel = XKCDViewModel()
+        viewModel = XKCDViewModel(cacheActor: NoCacheActor())
         viewModel.apiClient = MockAPIClient()
     }
     
@@ -44,6 +44,7 @@ final class XKCDViewerTests: XCTestCase {
         
         XCTAssertNotNil(viewModel.comic)
         XCTAssertFalse(viewModel.showNotFoundMessage)
+        XCTAssertFalse(viewModel.isLoading)
     }
     
     func testFetchItem1000000NotFound() async {
@@ -51,6 +52,7 @@ final class XKCDViewerTests: XCTestCase {
         
         XCTAssertNil(viewModel.comic)
         XCTAssertTrue(viewModel.showNotFoundMessage)
+        XCTAssertFalse(viewModel.isLoading)
     }
     
     
@@ -60,6 +62,7 @@ final class XKCDViewerTests: XCTestCase {
         XCTAssertNil(viewModel.comic)
         XCTAssertTrue(viewModel.showErrorAlert)
         XCTAssertEqual(viewModel.errorAlertState, .invalidURL)
+        XCTAssertFalse(viewModel.isLoading)
     }
     
     func testLoadComic() {
@@ -77,5 +80,6 @@ final class XKCDViewerTests: XCTestCase {
         XCTAssertNil(viewModel.comic)
         XCTAssertNil(viewModel.errorAlertState)
         XCTAssertFalse(viewModel.showErrorAlert)
+        XCTAssertFalse(viewModel.isLoading)
     }
 }

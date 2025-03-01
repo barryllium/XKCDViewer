@@ -23,6 +23,11 @@ class XKCDViewModel: ObservableObject {
     @Published var isLoading = false
     
     var apiClient: APIClientProtocol = APIClient.default
+    private let comicCacheActor: CacheActor
+    
+    init(cacheActor: CacheActor) {
+        self.comicCacheActor = cacheActor
+    }
     
     func loadComic(number: String) {
         showNotFoundMessage = false
@@ -46,11 +51,20 @@ class XKCDViewModel: ObservableObject {
             }
         }
         
+        if #available(iOS 17, *),
+           let cachedComic = await comicCacheActor.fetchComic(for: number) {
+            comic = cachedComic
+            return
+        }
+        
         let request = AsyncURLRequest<XKCDComic>(url: url)
         
         do {
             let result = try await apiClient.fetchURL(request)
             comic = result
+            if #available(iOS 17, *) {
+                try? await comicCacheActor.add(result)
+            }
         } catch NetworkError.notFound {
             showNotFoundMessage = true
         } catch {
