@@ -21,6 +21,10 @@ struct XKCDComic: Codable {
     let title: String
     let day: String
     
+    static func urlString(for comicNumber: Int) -> String {
+        "https://xkcd.com/\(comicNumber)/info.0.json"
+    }
+    
     enum CodingKeys: String, CodingKey {
         case month
         case number = "num"

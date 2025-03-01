@@ -69,4 +69,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView(cacheActor: NoCacheActor())
+        .environmentObject(NetworkViewModel())
 }

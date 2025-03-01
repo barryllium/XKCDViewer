@@ -36,7 +36,7 @@ class XKCDViewModel: ObservableObject {
     
     func fetchComic(number: String) async {
         guard let intValue = Int(number),
-            let url = URL(string: "https://xkcd.com/\(intValue)/info.0.json") else {
+            let url = URL(string: XKCDComic.urlString(for: intValue)) else {
             showAlert(state: .invalidURL)
             return
         }

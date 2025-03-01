@@ -56,6 +56,7 @@ struct ComicInfoView: View {
                 VStack {
                     Spacer()
                     Text(comic.alt)
+                        .font(.body)
                         .padding(24)
                         .foregroundStyle(.white)
                         .background(RoundedRectangle(cornerRadius: 4).fill(Color.black.opacity(0.9)))
