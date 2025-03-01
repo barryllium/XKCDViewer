@@ -52,6 +52,6 @@ Another persistence choice that was made is the assumption that all data is stat
 
 The vast majority of the code was written custom for this application, but I will point out a few pieces that I have carried forward from previous projects:
 
-* `Bundle+Extension.swift` - this code originally came from [](hackingwithswift.com), but I have been using it for loading json files from the bundle for years. It essentially goes in all my projects to help with unit testing.
+* `Bundle+Extension.swift` - this code originally came from [hackingwithswift.com](https://hackingwithswift.com), but I have been using it for loading json files from the bundle for years. It essentially goes in all my projects to help with unit testing.
 * `NetworkViewModel.swift` - this was adapted from code I've been using in the past few years. My original code had been updated to use the iOS 17 `@Observable` model, but I converted it back to use `@ObservedObject` for this project.
 
