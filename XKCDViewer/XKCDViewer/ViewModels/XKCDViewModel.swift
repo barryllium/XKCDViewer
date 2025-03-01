@@ -12,6 +12,7 @@ class XKCDViewModel: ObservableObject {
     @Published var showNotFoundAlert: Bool = false
     @Published var showInvalidURLAlert: Bool = false
     @Published var showGenericAlert: Bool = false
+    @Published var navigationPath: [String] = []
     
     var apiClient: APIClientProtocol = APIClient.default
     

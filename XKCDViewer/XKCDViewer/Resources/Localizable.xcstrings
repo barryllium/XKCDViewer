@@ -1,0 +1,39 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "comic_number" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comic Number"
+          }
+        }
+      }
+    },
+    "load_comic" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Load Comic!"
+          }
+        }
+      }
+    },
+    "xkcd_viewer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XKCD Viewer"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
