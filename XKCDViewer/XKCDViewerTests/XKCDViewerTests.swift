@@ -8,6 +8,7 @@
 import XCTest
 @testable import XKCDViewer
 
+@MainActor
 final class XKCDViewerTests: XCTestCase {
     var viewModel: XKCDViewModel!
     
@@ -41,22 +42,40 @@ final class XKCDViewerTests: XCTestCase {
     func testFetchItem100() async {
         await viewModel.fetchComic(number: "100")
         
-        XCTAssertNotNil(viewModel.item)
-        XCTAssertFalse(viewModel.showNotFoundAlert)
+        XCTAssertNotNil(viewModel.comic)
+        XCTAssertFalse(viewModel.showNotFoundMessage)
     }
     
     func testFetchItem1000000NotFound() async {
         await viewModel.fetchComic(number: "1000000")
         
-        XCTAssertNil(viewModel.item)
-        XCTAssertTrue(viewModel.showNotFoundAlert)
+        XCTAssertNil(viewModel.comic)
+        XCTAssertTrue(viewModel.showNotFoundMessage)
     }
     
     
-    func testFetchItemNegative1InvalidUrl() async {
+    func testFetchItemInvalidUrl() async {
         await viewModel.fetchComic(number: "abcd")
         
-        XCTAssertNil(viewModel.item)
-        XCTAssertTrue(viewModel.showInvalidURLAlert)
+        XCTAssertNil(viewModel.comic)
+        XCTAssertTrue(viewModel.showErrorAlert)
+        XCTAssertEqual(viewModel.errorAlertState, .invalidURL)
+    }
+    
+    func testLoadComic() {
+        viewModel.loadComic(number: "100")
+        
+        XCTAssertEqual(viewModel.navigationPath, ["100"])
+    }
+    
+    func testClearComic() {
+        viewModel.navigationPath = ["100"]
+        viewModel.showAlert()
+        viewModel.dismissComic()
+        
+        XCTAssertEqual(viewModel.navigationPath, [])
+        XCTAssertNil(viewModel.comic)
+        XCTAssertNil(viewModel.errorAlertState)
+        XCTAssertFalse(viewModel.showErrorAlert)
     }
 }

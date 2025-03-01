@@ -16,7 +16,7 @@ struct ContentView: View {
             VStack(alignment: .center, spacing: 16) {
                 NumberTextField(placeholder: "comic_number",
                                 text: $comicNumber) {
-                    // fetch and navigate
+                    loadComic()
                 }
                                 .font(.body)
                                 .padding(8)
@@ -26,7 +26,7 @@ struct ContentView: View {
                                 .frame(width: 160)
                 
                 Button {
-                    // fetch and navigate
+                    loadComic()
                 } label: {
                     let opacity = comicNumber.isEmpty ? 0.5 : 1
                     Text("load_comic")
@@ -37,9 +37,19 @@ struct ContentView: View {
                         .background(Capsule().foregroundStyle(Color.blue.opacity(opacity)))
                 }
                 .disabled(comicNumber.isEmpty)
+                .navigationDestination(for: String.self) { number in
+                    ComicDetailView(viewModel: viewModel, number: number)
+                }
             }
             .padding()
             .navigationTitle("xkcd_viewer")
+        }
+    }
+    
+    func loadComic() {
+        viewModel.loadComic(number: comicNumber)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            comicNumber = ""
         }
     }
 }
