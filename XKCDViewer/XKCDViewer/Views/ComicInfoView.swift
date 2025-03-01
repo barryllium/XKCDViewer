@@ -15,7 +15,7 @@ struct ComicInfoView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack(alignment: .center, spacing: 16) {
-                    Text(comic.title)
+                    Text(comic.safeTitle)
                         .font(.title)
                         .fontWeight(.bold)
                     
