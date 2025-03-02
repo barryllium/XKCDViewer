@@ -8,7 +8,7 @@
 import Foundation
 
 // Protocol that can be used to make unit testing simpler
-protocol APIClientProtocol {
+protocol APIClientProtocol: Sendable {
     func fetchURL<T: Decodable>(_ request: AsyncURLRequest<T>) async throws -> T
 }
 

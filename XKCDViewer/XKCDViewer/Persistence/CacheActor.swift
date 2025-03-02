@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CacheActor {
+protocol CacheActor: Sendable {
     func fetchComic(for id: String) async -> XKCDComic?
     func add(_ comic: XKCDComic) async throws
 }

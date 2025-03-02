@@ -14,31 +14,30 @@ struct ComicInfoView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                VStack(alignment: .center, spacing: 16) {
+                VStack(alignment: .center, spacing: 8) {
                     Text(comic.safeTitle)
                         .font(.title)
                         .fontWeight(.bold)
                     
-                    Button {
-                        withAnimation {
-                            self.isShowingAltText.toggle()
-                        }
-                    } label: {
-                        AsyncImage(url: URL(string: comic.image)) { image in
-                            image
-                                .resizable()
-                                .scaledToFit()
-                        } placeholder: {
-                            Image(.comicPlaceholder)
-                        }
-                        .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
-                        .accessibilityLabel(comic.transcript)
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
-                    
                     Text(comic.date ?? "")
                         .foregroundStyle(.secondary)
                         .font(.subheadline)
+                        .padding(.bottom, 16)
+                    
+                    AsyncImage(url: URL(string: comic.image)) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    } placeholder: {
+                        Image(.comicPlaceholder)
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
+                    .accessibilityLabel(comic.transcript)
+                    .onTapGesture {
+                        withAnimation {
+                            self.isShowingAltText.toggle()
+                        }
+                    }
                     
                     Spacer()
                 }
