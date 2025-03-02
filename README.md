@@ -8,6 +8,7 @@ My main priorities with this project was reliability and scalability. This invol
 * Unit and Integration tests to assure that anywhere we transform data, make network operations, or utilize persistent is properly tested so future changes are less prone to create unnoticed errors
 * Reusable components where possible: rather than just putting a TextField in the main view, a reusable component was created that handled the validation to only allow numbers in the field - thus it could be reused elsewhere if needed.
 * Added a persistence layer for iOS 17+, to reduce network calls
+* The application meets Swift 6 Concurrency standards.
 
 ## Time spent
 
